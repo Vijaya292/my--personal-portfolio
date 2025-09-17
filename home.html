@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vijaya Jyothi — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      width: 100%;
+      background-color: #1a1a1a; /* Dark background */
+      color: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: #00abf0;
+    }
+
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #222;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-list li a {
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-list li a:hover {
+      color: #00abf0;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                  url('https://images.unsplash.com/photo-1581090700227-1e8e1bafbe42?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      padding: 0 2rem;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content span {
+      color: #00abf0;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background-color: #00abf0;
+      color: #222;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0088b0;
+      color: #fff;
+    }
+
+    /* Sections */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .about, .skills, .projects, .contact {
+      text-align: center;
+    }
+
+    .skills .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .skill-item {
+      background-color: #333;
+      color: #fff;
+      padding: 0.8rem 1.2rem;
+      border-radius: 20px;
+      font-size: 1rem;
+    }
+
+    .projects-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .project-card {
+      background-color: #2a2a2a;
+      color: #fff;
+      padding: 1rem;
+      border: 1px solid #444;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .project-info {
+      margin-top: 1rem;
+    }
+
+    /* Contact Form */
+    input, textarea {
+      background-color: #2a2a2a;
+      color: #fff;
+      border: 1px solid #555;
+      padding: 0.5rem;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #ccc;
+    }
+
+    button[type="submit"] {
+      background-color: #00abf0;
+      color: #000;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0088b0;
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background-color: #111;
+      color: #ccc;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-list {
+        position: absolute;
+        top: 64px;
+        right: 0;
+        background-color: #222;
+        width: 100%;
+        height: calc(100vh - 64px);
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .nav-list.active {
+        transform: translateX(0);
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Vijaya Jyothi</div>
+      <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+      <ul class="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Hello, I'm <span>Vijaya Jyothi</span></h1>
+      <p>I’m a passionate Data Scientist / Developer.</p>
+      <a href="#contact" class="btn">Contact Me</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a passionate Data Scientist with a strong foundation in mathematics, statistics, and computer science.
+      My goal is to extract meaningful insights from data to drive smarter decision-making and innovation.
+      I enjoy building predictive models, visualizing complex datasets, and solving real-world problems using machine learning and data analysis.
+      <br><br>
+      My journey into data science started with a deep curiosity for patterns and how data shapes the world around us.
+      Since then, I've worked on various projects involving data cleaning, feature engineering, model building, and deployment.
+      <br><br>
+      I’m proficient in tools and languages such as Python, Pandas, NumPy, Scikit-learn, TensorFlow, SQL, and Power BI.
+      I’m always learning new techniques and expanding my skills to stay at the forefront of the industry.
+      <br><br>
+      When I’m not coding or crunching numbers, I enjoy exploring new technologies, participating in hackathons, and contributing to open-source projects. I have completed the Introduction to Generative AI certification and ChatGPT prompt engineering course.
+    </p>
+  </section>
+
+  <section id="skills" class="skills">
+  <h2>Skills</h2>
+  <div class="skill-list">
+    <div class="skill-item">HTML</div>
+    <div class="skill-item">CSS</div>
+    <div class="skill-item">Python</div>
+    <div class="skill-item">Machine Learning</div>
+    <div class="skill-item">Data Visualization</div>
+    <div class="skill-item">SQL</div>
+  </div>
+</section>
+
+
+  <section id="projects" class="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="restaurant-thumbnail.jpg" alt="Restaurant Website" />
+        <div class="project-info">
+          <h3>Restaurant Website</h3>
+          <p>A responsive restaurant website built with HTML & CSS.</p>
+          <p>
+            Project Link: 
+            <a href="https://codepen.io/FlorinPop17/full/xxROyL" target="_blank">View Project</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="library-thumbnail.jpg" alt="Library Management System" />
+        <div class="project-info">
+          <h3>Library Management System</h3>
+          <p>Frontend UI of a Library Management System built with HTML & CSS.</p>
+          <p>
+            Project Link: 
+            <a href="https://codepen.io/ninoh/pen/WNrrErM" target="_blank">View Project</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" style="max-width: 600px; margin: 2rem auto; padding: 0 1rem; text-align: left;">
+    <h2 style="text-align: center; margin-bottom: 1.5rem;">Contact Me</h2>
+    <form action="mailto:your.email@example.com" method="POST" enctype="text/plain" style="display: flex; flex-direction: column; gap: 1rem;">
+      <label for="name" style="font-weight: 600;">Name</label>
+      <input type="text" id="name" name="Name" placeholder="Your name" required>
+      
+      <label for="email" style="font-weight: 600;">Email</label>
+      <input type="email" id="email" name="Email" placeholder="your.email@example.com" required>
+      
+      <label for="message" style="font-weight: 600;">Message</label>
+      <textarea id="message" name="Message" rows="5" placeholder="Write your message here..." required></textarea>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Vijaya Jyothi. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navList = document.querySelector('.nav-list');
+    mobileMenu.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
